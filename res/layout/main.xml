@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:orientation="vertical" android:layout_width="fill_parent"
+	android:layout_height="fill_parent">
+	<Button android:id="@+id/smoking_button_id" android:layout_width="fill_parent"
+		android:layout_height="wrap_content" android:text="@string/smoking_button" />
+	<Button android:id="@+id/give_up_smoking_button_id" android:layout_width="fill_parent"
+		android:layout_height="wrap_content" android:text="@string/give_up_smoking_button" />
+</LinearLayout>

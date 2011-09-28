@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="hello">Hello World, Start!</string>
+    <string name="app_name">nsl</string>
+    <string name="price_per_cigarettes_text">煙草1本あたりの値段</string>
+    <string name="start_button">スタート</string>
+    <string name="smoking_button">我慢出来ない</string>
+    <string name="give_up_smoking_button">我慢する!!</string>
+    <string name="to_main_button">メインへ</string>
+    <string name="daily_result">本日の集計</string>
+    <string name="monthly_result">今月の集計</string>
+    <string name="total_result">総集計</string>
+</resources>
