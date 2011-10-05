@@ -16,18 +16,18 @@ import android.view.View;
 
 public class ChartView extends View {
 	
-	private AFreeChart chart;
+	private AFreeChart mChart;
 
 	public ChartView(Context context, DefaultCategoryDataset dataset, String title) {
 		super(context);
-		this.chart = createChart(dataset, title);
+		this.mChart = createChart(dataset, title);
 	}
 
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
         RectShape chartArea = new RectShape(0.0, 0.0, getWidth(), getHeight());
-        this.chart.draw(canvas, chartArea);
+        this.mChart.draw(canvas, chartArea);
     }	
     
     private AFreeChart createChart(DefaultCategoryDataset dataset, String title) {
@@ -36,8 +36,7 @@ public class ChartView extends View {
     	// X軸の項目名を斜めにするお仕事
     	CategoryPlot p = chart.getCategoryPlot();
     	CategoryAxis ca = p.getDomainAxis();
-    	ca.setCategoryLabelPositions
-    	(CategoryLabelPositions.createUpRotationLabelPositions(Math.PI / 6.0));
+    	ca.setCategoryLabelPositions(CategoryLabelPositions.createUpRotationLabelPositions(Math.PI / 6.0));
     	return chart;
     }
 }

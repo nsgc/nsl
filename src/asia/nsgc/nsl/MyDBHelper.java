@@ -12,19 +12,19 @@ public class MyDBHelper extends SQLiteOpenHelper {
 	@Override
 	public void onCreate(SQLiteDatabase db) {
         db.execSQL(
-                "create table DailyResult("+
+                "create table DailyResult(" +
                 "   date text not null," +
                 "   total_price integer not null" +
                 ");"
             );
         db.execSQL(
-                "create table MonthlyResult("+
+                "create table MonthlyResult(" +
                 "   date text not null," +
                 "   total_price integer not null" +
                 ");"
             );
         db.execSQL(
-                "create table TotalResult("+
+                "create table TotalResult(" +
                 "   date text not null," +
                 "   total_price integer not null" +
                 ");"

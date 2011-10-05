@@ -19,8 +19,7 @@ public class ResultActivity extends BaseActivity {
 		setContentView(R.layout.result);
 
 		Intent intent = getIntent();
-		Integer dailyLastPrice = selectDailyLastPrice(intent.getIntExtra(
-				"Price", 0));
+		Integer dailyLastPrice = selectDailyLastPrice(intent.getIntExtra("Price", 0));
 		
 		insertDailyLastPrice(dailyLastPrice);
 
@@ -98,7 +97,7 @@ public class ResultActivity extends BaseActivity {
 
         Integer monthlyLastPrice;
         if (mc.moveToFirst()) {
-        	if ( mc.getString(mc.getColumnIndex("date")).equals(today) ) {
+        	if (mc.getString(mc.getColumnIndex("date")).equals(today)) {
         		monthlyLastPrice = dailyLastPrice;
         		values.put("total_price", monthlyLastPrice);
         		// 同日の場合
@@ -157,7 +156,7 @@ public class ResultActivity extends BaseActivity {
 		SimpleDateFormat fmt = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss Z");
 
 		values.put("date", fmt.format(cal.getTime()));
-		values.put("total_price", (Integer)dailyLastPrice);
+		values.put("total_price", (Integer) dailyLastPrice);
 		db.insert("DailyResult", "", values);
 
 		db.close();
