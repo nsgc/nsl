@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-	<item android:id="@+id/menu_result_id" android:title="結果" android:numericShortcut="1" />
+	<item android:id="@+id/debug_mode" android:title="デバッグ" android:numericShortcut="1" />
 	<item android:id="@+id/menu_daily_chart_id" android:title="今日のグラフ" android:numericShortcut="2" />
 	<item android:id="@+id/menu_monthly_chart_id" android:title="今月のグラフ" android:numericShortcut="3" />
 	<item android:id="@+id/menu_total_chart_id" android:title="総計グラフ" android:numericShortcut="4" />

@@ -1,4 +1,4 @@
-package asia.nsgc.nsl;
+package asia.nsgc.nsl.View;
 
 import org.afree.chart.AFreeChart;
 import org.afree.chart.ChartFactory;

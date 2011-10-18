@@ -1,4 +1,4 @@
-package asia.nsgc.nsl;
+package asia.nsgc.nsl.Activity;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -8,6 +8,9 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import asia.nsgc.nsl.R;
+import asia.nsgc.nsl.R.id;
+import asia.nsgc.nsl.R.layout;
 
 public class StartActivity extends Activity {
     /** Called when the activity is first created. */

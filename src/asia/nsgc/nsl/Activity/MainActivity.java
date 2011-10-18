@@ -1,4 +1,4 @@
-package asia.nsgc.nsl;
+package asia.nsgc.nsl.Activity;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -8,6 +8,9 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import asia.nsgc.nsl.R;
+import asia.nsgc.nsl.R.id;
+import asia.nsgc.nsl.R.layout;
 
 public class MainActivity extends BaseActivity implements OnClickListener {
 	/** 1本あたりの煙草の値段. */

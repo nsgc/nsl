@@ -1,4 +1,4 @@
-package asia.nsgc.nsl;
+package asia.nsgc.nsl.Activity;
 
 import java.text.SimpleDateFormat;
 import java.util.GregorianCalendar;
@@ -11,6 +11,10 @@ import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Window;
+import asia.nsgc.nsl.MyDBHelper;
+import asia.nsgc.nsl.R;
+import asia.nsgc.nsl.R.id;
+import asia.nsgc.nsl.View.ChartView;
 
 public class ChartActivity extends BaseActivity {
 	public static final int DEFAULT_ID = 0;
