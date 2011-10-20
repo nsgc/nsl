@@ -8,14 +8,11 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import asia.nsgc.nsl.MyDBHelper;
 import asia.nsgc.nsl.R;
-import asia.nsgc.nsl.R.id;
-import asia.nsgc.nsl.R.layout;
 
 public class ResultActivity extends BaseActivity {
 	@Override

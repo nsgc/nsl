@@ -13,7 +13,6 @@ import android.util.Log;
 import android.view.Window;
 import asia.nsgc.nsl.MyDBHelper;
 import asia.nsgc.nsl.R;
-import asia.nsgc.nsl.R.id;
 import asia.nsgc.nsl.View.ChartView;
 
 public class ChartActivity extends BaseActivity {
