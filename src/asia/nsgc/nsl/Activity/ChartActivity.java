@@ -5,7 +5,6 @@ import java.util.GregorianCalendar;
 
 import org.afree.data.category.DefaultCategoryDataset;
 
-import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
@@ -22,29 +21,20 @@ public class ChartActivity extends BaseActivity {
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 
-		DefaultCategoryDataset dataset = new DefaultCategoryDataset();
-
 		MyDBHelper helper = new MyDBHelper(this.getApplicationContext());
 		SQLiteDatabase db = helper.getReadableDatabase();
 
-		String title = "";
-
-		Intent intent = getIntent();
-		int type = intent.getIntExtra("type", DEFAULT_ID);
 		GregorianCalendar cal = new GregorianCalendar();
-		Cursor c = null;
-
 		String today = "";
+		String title = "";
 		String table = "";
 		String selection = null;
 		String[] selectionArgs = null;
 		int substringIndex = 0;
-		SimpleDateFormat fmt = null;
 		
-		switch (type) {
+		switch (getIntent().getIntExtra("type", DEFAULT_ID)) {
 		case R.id.menu_daily_chart_id:
-			fmt = new SimpleDateFormat("yyyy/MM/dd");
-			today = fmt.format(cal.getTime());
+			today = new SimpleDateFormat("yyyy/MM/dd").format(cal.getTime());
 			title = today + "のランキング";
 			
 			table = "DailyResult";
@@ -53,8 +43,7 @@ public class ChartActivity extends BaseActivity {
 			substringIndex = 10;
 			break;
 		case R.id.menu_monthly_chart_id:
-			fmt = new SimpleDateFormat("yyyy/MM");
-			today = fmt.format(cal.getTime());
+			today = new SimpleDateFormat("yyyy/MM").format(cal.getTime());
 			title = today + "のランキング";
 			
 			table = "MonthlyResult";
@@ -63,8 +52,7 @@ public class ChartActivity extends BaseActivity {
 			substringIndex = 5;
 			break;
 		case R.id.menu_total_chart_id:
-			fmt = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss Z");
-			today = fmt.format(cal.getTime());
+			today = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss Z").format(cal.getTime());
 			title = "総合ランキング(" + today + "時点)";
 
 			table = "TotalResult";
@@ -72,7 +60,8 @@ public class ChartActivity extends BaseActivity {
 		default:
 			break;
 		}
-		c = db.query(table, new String[] { "date", "total_price" }, selection, selectionArgs, null, null, "date ASC");
+		Cursor c = db.query(table, new String[] { "date", "total_price" }, selection, selectionArgs, null, null, "date ASC");
+		DefaultCategoryDataset dataset = new DefaultCategoryDataset();
 		
 		if (c.moveToFirst()) {
 			int count = c.getCount();
@@ -84,10 +73,9 @@ public class ChartActivity extends BaseActivity {
 		}
 		c.close();
 		db.close();
-
-		ChartView cv = new ChartView(this, dataset, title);
-
+		helper.close();
+	
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
-		setContentView(cv);
+		setContentView(new ChartView(this, dataset, title));
 	}
 }

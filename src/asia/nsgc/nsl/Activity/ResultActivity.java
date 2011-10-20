@@ -20,8 +20,7 @@ public class ResultActivity extends BaseActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.result);
 
-		Intent intent = getIntent();
-		int price = intent.getIntExtra("Price", 0);
+		int price = getIntent().getIntExtra("Price", 0);
 
 		Integer dailyLastPrice = selectDailyLastPrice(price);
 		insertDailyLastPrice(dailyLastPrice);
@@ -65,8 +64,7 @@ public class ResultActivity extends BaseActivity {
 		MyDBHelper helper = new MyDBHelper(this.getApplicationContext());
 		SQLiteDatabase db = helper.getWritableDatabase();
 
-		SimpleDateFormat fmt = new SimpleDateFormat(selectDateFormat);
-		String today = fmt.format(new GregorianCalendar().getTime());
+		String today = new SimpleDateFormat(selectDateFormat).format(new GregorianCalendar().getTime());
 
 		Cursor cursor = db.query(targetTable, new String[] { "total_price", "date" }, "date like ?", new String[] { today.substring(0, substringEnd) + "%" }, null, null, "date DESC", "1");
 		ContentValues values = new ContentValues();
@@ -101,21 +99,14 @@ public class ResultActivity extends BaseActivity {
 		MyDBHelper helper = new MyDBHelper(this.getApplicationContext());
 		SQLiteDatabase db = helper.getReadableDatabase();
 
-		GregorianCalendar cal = new GregorianCalendar();
-		SimpleDateFormat fmt = new SimpleDateFormat("yyyy/MM/dd");
-
 		Cursor c = db.query("DailyResult",
 				new String[] { "date", "total_price" }, "date like ?",
-				new String[] { fmt.format(cal.getTime()) + "%" }, null, null,
-				"date DESC", "1");
-		Integer lastPriceForTable;
+				new String[] { new SimpleDateFormat("yyyy/MM/dd").format(new GregorianCalendar().getTime()) + "%" },
+				null, null, "date DESC", "1");
+		Integer lastPriceForTable = price;
 
 		if (c.moveToFirst()) {
-			lastPriceForTable = c.getInt(c.getColumnIndex("total_price"))
-					+ price;
-		} else {
-			// 新しい日で初めて起動した場合、priceの値をセットする
-			lastPriceForTable = price;
+			lastPriceForTable = c.getInt(c.getColumnIndex("total_price")) + price;
 		}
 		c.close();
 		db.close();
@@ -126,11 +117,9 @@ public class ResultActivity extends BaseActivity {
 	private void insertDailyLastPrice(Integer price) {
 		MyDBHelper helper = new MyDBHelper(this.getApplicationContext());
 		SQLiteDatabase db = helper.getWritableDatabase();
-
 		ContentValues values = new ContentValues();
-		SimpleDateFormat fmt = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss Z");
 
-		values.put("date", fmt.format(new GregorianCalendar().getTime()));
+		values.put("date", new SimpleDateFormat("yyyy/MM/dd HH:mm:ss Z").format(new GregorianCalendar().getTime()));
 		values.put("total_price", (Integer) price);
 		db.insert("DailyResult", "", values);
 
