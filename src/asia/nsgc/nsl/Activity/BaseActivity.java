@@ -1,16 +1,14 @@
 package asia.nsgc.nsl.Activity;
 
-import java.io.FileNotFoundException;
-
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.ContentValues;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
+import android.util.Log;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.widget.Toast;
 import asia.nsgc.nsl.MyDBHelper;
 import asia.nsgc.nsl.R;
 
@@ -37,14 +35,11 @@ public class BaseActivity extends Activity {
 			    public void onClick(DialogInterface dialog, int item) {
 
 			    	switch (item) {
-			    	case 1:
+			    	case 0:	
 				    	db.delete("TotalResult",   null, null);
 				    	db.delete("MonthlyResult", null, null);
 				    	db.delete("DailyResult",   null, null);
 				    	
-				    	db.delete("TotalResult",   null, null);
-				    	db.delete("MonthlyResult", null, null);
-				    	db.delete("DailyResult",   null, null);
 						ContentValues values = new ContentValues();
 						values.put("total_price", -20);
 						values.put("date", "2011/06/06 9:00");
@@ -97,6 +92,18 @@ public class BaseActivity extends Activity {
 						values.put("total_price", 20);
 						values.put("date", "2011/09/30 09:00");
 				    	db.insert("DailyResult",   null, values);
+						values = new ContentValues();
+						values.put("total_price", 20);
+						values.put("date", "2011/10/01 09:00");
+				    	db.insert("DailyResult",   null, values);
+						values = new ContentValues();
+						values.put("total_price", 40);
+						values.put("date", "2011/10/01 10:00");
+				    	db.insert("DailyResult",   null, values);
+						values = new ContentValues();
+						values.put("total_price", -20);
+						values.put("date", "2011/10/11 09:00");
+				    	db.insert("DailyResult",   null, values);
 				    	
 						values = new ContentValues();
 						values.put("total_price", -20);
@@ -114,9 +121,6 @@ public class BaseActivity extends Activity {
 						values.put("total_price", 40);
 						values.put("date", "2011/08/09");
 				    	db.insert("MonthlyResult",   null, values);
-						values = new ContentValues();
-						values.put("total_price", 40);
-						values.put("date", "2011/08/08");
 				    	db.insert("MonthlyResult",   null, values);
 						values = new ContentValues();
 						values.put("total_price", 60);
@@ -130,25 +134,39 @@ public class BaseActivity extends Activity {
 						values.put("total_price", 80);
 						values.put("date", "2011/09/30");
 				    	db.insert("MonthlyResult",   null, values);
+						values = new ContentValues();
+						values.put("total_price", 40);
+						values.put("date", "2011/10/01");
+				    	db.insert("MonthlyResult",   null, values);
+						values = new ContentValues();
+						values.put("total_price", 20);
+						values.put("date", "2011/10/11");
+				    	db.insert("MonthlyResult",   null, values);
 				    	
 						values = new ContentValues();
 						values.put("total_price", -60);
 						values.put("date", "2011/06");
 				    	db.insert("TotalResult",   null, values);
 						values = new ContentValues();
-						values.put("total_price", 40);
+						values.put("total_price", -20);
 						values.put("date", "2011/08");
 				    	db.insert("TotalResult",   null, values);
 						values = new ContentValues();
-						values.put("total_price", 80);
+						values.put("total_price", 60);
 						values.put("date", "2011/09");
 				    	db.insert("TotalResult",   null, values);
+						values = new ContentValues();
+						values.put("total_price", 80);
+						values.put("date", "2011/10");
+				    	db.insert("TotalResult",   null, values);
+				    	Log.d("BaseActivity", "insert new data");
 				    	break;
 
-			    	case 2:
+			    	case 1:
 				    	db.delete("TotalResult",   null, null);
 				    	db.delete("MonthlyResult", null, null);
 				    	db.delete("DailyResult",   null, null);
+				    	Log.d("BaseActivity", "delete data");
 				    	break;
 			    	}
 			    }
